@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabaseClient';
 import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 // ============================================================================
 // Hyper-Speed Hybrid Core 
@@ -377,6 +378,7 @@ export default function App() {
           <p className="mt-1 text-slate-500">Zero financial deposits are needed to participate.</p>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
