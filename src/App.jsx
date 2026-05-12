@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabaseClient';
-import { Cpu, Zap, Lock, Terminal, Info, Key, User } from 'lucide-react';
+import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send } from 'lucide-react';
 
 // ============================================================================
 // Hyper-Speed Hybrid Core 
@@ -258,6 +258,17 @@ export default function App() {
               <h1 className="text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-fuchsia-500">X MINER</h1>
             </div>
             <div className="flex gap-4 items-center">
+              {/* Telegram 按钮 */}
+              <a 
+                href="https://t.me/xminerfun" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-bold text-cyan-400 border-2 border-slate-800 bg-slate-950 px-4 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition-all"
+              >
+                <Send size={14} />
+                TELEGRAM
+              </a>
+
               <div className="bg-slate-950 border-2 border-slate-800 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
                 <span className="text-slate-500">ID:</span> <span className="text-cyan-400 text-base">{profile.username}</span>
               </div>
@@ -335,7 +346,7 @@ export default function App() {
               
               {/* 极致冷酷的单行解锁宣告 */}
               <div className="bg-slate-900/90 border-2 border-slate-800 px-6 py-4 rounded-xl my-6 shadow-[0_0_20px_rgba(0,0,0,0.8)] z-10">
-                <span className="text-cyan-400 font-black text-base tracking-wide">MARKET UNLOCKS AT 50% SUPPLY MINED</span>
+                <span className="text-cyan-400 font-black text-base tracking-wide">MARKET UNLOCKS IN THE FUTURE</span>
               </div>
 
               <div className="w-full max-w-md px-6 z-10 text-center">
