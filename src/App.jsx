@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabaseClient';
-import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send } from 'lucide-react';
+import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send, Twitter } from 'lucide-react';
 
 // ============================================================================
 // Hyper-Speed Hybrid Core 
@@ -57,7 +57,6 @@ export default function App() {
   const workersRef = useRef([]);
   const terminalEndRef = useRef(null);
 
-  // 计算实时进度百分比
   const currentProgressPercent = (totalMinedGlobal / TOTAL_SUPPLY * 100).toFixed(2);
 
   useEffect(() => {
@@ -193,9 +192,6 @@ export default function App() {
 
   if (isLoading && !user) return <div className="min-h-screen bg-[#020617] flex items-center justify-center font-mono text-2xl tracking-widest text-cyan-400 animate-pulse">INITIALIZING KERNEL...</div>;
 
-  // ============================================================================
-  // AUTH PORTAL
-  // ============================================================================
   if (!user) {
     return (
       <div className="min-h-screen bg-[#020617] text-slate-200 font-mono flex flex-col items-center justify-between p-6 selection:bg-cyan-500 selection:text-black relative overflow-hidden">
@@ -241,9 +237,6 @@ export default function App() {
     );
   }
 
-  // ============================================================================
-  // MAIN DASHBOARD
-  // ============================================================================
   return (
     <div className="min-h-screen bg-[#020617] text-slate-200 font-mono flex flex-col justify-between selection:bg-cyan-500 selection:text-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e905_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e905_1px,transparent_1px)] bg-[size:5rem_5rem] pointer-events-none"></div>
@@ -258,7 +251,7 @@ export default function App() {
               <h1 className="text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-fuchsia-500">X MINER</h1>
             </div>
             <div className="flex gap-4 items-center">
-              {/* Telegram 按钮 */}
+              {/* Telegram 传送门 */}
               <a 
                 href="https://t.me/xminerfun" 
                 target="_blank" 
@@ -266,7 +259,18 @@ export default function App() {
                 className="flex items-center gap-2 text-xs font-bold text-cyan-400 border-2 border-slate-800 bg-slate-950 px-4 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition-all"
               >
                 <Send size={14} />
-                TELEGRAM
+                TG
+              </a>
+
+              {/* Twitter (X) 传送门 */}
+              <a 
+                href="https://x.com/xminerfun" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-bold text-cyan-400 border-2 border-slate-800 bg-slate-950 px-4 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition-all"
+              >
+                <Twitter size={14} />
+                TWITTER
               </a>
 
               <div className="bg-slate-950 border-2 border-slate-800 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
@@ -333,38 +337,23 @@ export default function App() {
             </div>
           )}
 
-          {/* ⚡ 极简版市场锁定界面 */}
           {activeTab === 'market' && (
             <div className="flex flex-col items-center justify-center py-24 bg-slate-950/40 border-2 border-slate-800/80 border-dashed backdrop-blur-md rounded-3xl shadow-2xl relative overflow-hidden max-w-3xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none"></div>
-              
               <Lock size={72} className="text-slate-700 mb-8 animate-bounce" />
-              
-              <h2 className="text-4xl font-black text-slate-300 tracking-tight mb-2">
-                MARKET LOCKED
-              </h2>
-              
-              {/* 极致冷酷的单行解锁宣告 */}
+              <h2 className="text-4xl font-black text-slate-300 tracking-tight mb-2">MARKET LOCKED</h2>
               <div className="bg-slate-900/90 border-2 border-slate-800 px-6 py-4 rounded-xl my-6 shadow-[0_0_20px_rgba(0,0,0,0.8)] z-10">
-                <span className="text-cyan-400 font-black text-base tracking-wide">MARKET UNLOCKS IN THE FUTURE</span>
+                <span className="text-cyan-400 font-black text-base tracking-wide">MARKET UNLOCKS AT 50% SUPPLY MINED</span>
               </div>
-
               <div className="w-full max-w-md px-6 z-10 text-center">
                 <div className="flex justify-between text-xs font-bold text-slate-500 mb-2">
                   <span>CURRENT PROGRESS:</span>
                   <span className="text-amber-500 font-black">{currentProgressPercent}% / 50.00%</span>
                 </div>
                 <div className="w-full h-3 bg-black border border-slate-800 rounded-full overflow-hidden p-0.5 mb-4">
-                  <div 
-                    className="h-full bg-amber-500 rounded-full transition-all duration-500 shadow-[0_0_12px_#f59e0b]" 
-                    style={{ width: `${Math.min(currentProgressPercent * 2, 100)}%` }}
-                  ></div>
+                  <div className="h-full bg-amber-500 rounded-full transition-all duration-500 shadow-[0_0_12px_#f59e0b]" style={{ width: `${Math.min(currentProgressPercent * 2, 100)}%` }}></div>
                 </div>
-                <p className="text-xs font-bold text-slate-600 tracking-widest uppercase">
-                  {totalMinedGlobal >= TOTAL_SUPPLY * 0.5 
-                    ? "🔓 KERNEL UNLOCKING..." 
-                    : "MINE X TO ACCELERATE ECOSYSTEM UNLOCK."}
-                </p>
+                <p className="text-xs font-bold text-slate-600 tracking-widest uppercase">{totalMinedGlobal >= TOTAL_SUPPLY * 0.5 ? "🔓 KERNEL UNLOCKING..." : "MINE X TO ACCELERATE ECOSYSTEM UNLOCK."}</p>
               </div>
             </div>
           )}
