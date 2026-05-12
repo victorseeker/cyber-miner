@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabaseClient';
-import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send, Twitter } from 'lucide-react';
+import { Cpu, Zap, Lock, Terminal, Info, Key, User, Send, X } from 'lucide-react';
 
 // ============================================================================
-// Hyper-Speed Hybrid Core 
+// Hyper-Speed Hybrid Core (Optimized for M4 Architecture)
 // ============================================================================
 const workerScript = `
   self.onmessage = function(e) {
@@ -262,14 +262,14 @@ export default function App() {
                 TG
               </a>
 
-              {/* Twitter (X) 传送门 */}
+              {/* X (Twitter) 传送门 - 修复图标名称为 X */}
               <a 
                 href="https://x.com/xminerfun" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-xs font-bold text-cyan-400 border-2 border-slate-800 bg-slate-950 px-4 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition-all"
               >
-                <Twitter size={14} />
+                <X size={14} />
                 TWITTER
               </a>
 
